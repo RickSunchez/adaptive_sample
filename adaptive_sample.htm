@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<script type="text/javascript">
+		var toggle_screen = () => {
+			let users = document.getElementsByTagName("nav")[0],
+				messages = document.getElementsByTagName("main")[0];
+
+			if (users.offsetWidth) {
+				users.style.display = "none";
+				messages.style.display = "block";
+			}
+			else {
+				users.style.display = "block";
+				messages.style.display = "none";
+			}
+		}
+
+		window.onresize = () => {
+			//THIS IS KOSTЫL'
+			let width = document.body.offsetWidth,
+				users = document.getElementsByTagName("nav")[0],
+				messages = document.getElementsByTagName("main")[0];
+			
+			if (width > 600) {
+				users.style.display = "block";
+				messages.style.display = "block";
+			} 
+			else {
+				users.style.display = "block";
+				messages.style.display = "none";
+			}
+		}
+	</script>
+	<style type="text/css">
+	body {
+		margin: 0px;
+		padding: 0px;
+	}
+	#toggle_screen {display: none}
+	#app {
+		margin: 0 auto;
+		height: 600px;
+		max-width: 1100px;
+		min-width: 300px;
+		position: relative;
+	}
+		header {
+			width: 100%;
+			height: 50px;
+			background-color: #2D5EFF;
+		}
+		nav {
+			width: 300px;
+			height: 550px;
+			background-color: #6387FF;
+			float: left;
+			display: block;
+		}
+		main {
+			width: calc(100% - 300px);
+			height: 550px;
+			background-color: #CDD8FF;
+			float: left;
+			display: block;
+		}
+			.message_in,
+			.message_out {
+				width: 100%;
+				min-height: 80px;
+				height: auto;
+				position: relative;
+			}
+				.message_in_content {
+					left: 0px;
+					height: 50px;
+					margin: 15px;
+					border-radius: 15px;
+					background-color: #FEC962;
+					position: absolute;
+				}
+				.message_out_content {
+					right: 0px;
+					height: 50px;
+					margin: 15px;
+					border-radius: 15px;
+					background-color: #FE75DC;
+					position: absolute;
+				}
+				.w250 {width: 220px;}
+				.w300 {width: 100px;}
+				.w400 {width: 200px;}
+				.w500 {width: 175px;}
+
+	@media (max-width: 600px) {
+		#toggle_screen {display: inline;}
+		#app {
+			width: 300px;
+		}
+		main {
+			width: 300px;
+			position: absolute;
+			left: 0px;
+			display: none;
+		}
+		#toggle_screen {
+			border: none;
+			height: 50px;
+			width: 50px;
+			position: relative;
+			background-color: #829BF6;
+			outline: none;
+		}
+			#toggle_screen:before {
+				position: absolute;
+				content: "";
+				width: 30px;
+				height: 30px;
+				background: linear-gradient(to top, 
+													#515151 20%, 
+													rgba(0,0,0,0) 20%,
+													rgba(0,0,0,0) 40%,
+													#515151 40%,
+													#515151 60%,
+													rgba(0,0,0,0) 60%,
+													rgba(0,0,0,0) 80%,
+													#515151 80%,
+													#515151 100%);
+				top: 10px;
+				left: 10px;
+			}
+			#toggle_screen:hover {
+				background-color: #A8BAFA;
+			}
+	}
+
+	</style>
+</head>
+<body>
+	<div id="app">
+		<header>
+			<button id="toggle_screen" onclick="toggle_screen()"></button>
+		</header>
+		<div id="content">
+			<nav></nav>
+			<main>
+				<div class="message_in">
+					<div class="message_in_content w250"></div>
+				</div>
+				<div class="message_out">
+					<div class="message_out_content w300"></div>
+				</div>
+				<div class="message_out">
+					<div class="message_out_content w250"></div>
+				</div>
+				<div class="message_in">
+					<div class="message_in_content w250"></div>
+				</div>
+				<div class="message_out">
+					<div class="message_out_content w500"></div>
+				</div>
+				<div class="message_in">
+					<div class="message_in_content w400"></div>
+				</div>
+			</main>
+		</div>
+	</div>
+</body>
+</html>
